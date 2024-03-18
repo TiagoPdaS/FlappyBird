@@ -9,6 +9,7 @@ body{
     display: block;
     align-items: center;
     text-align: center;
+    overflow: hidden;
 }
 
 h3{
@@ -16,3 +17,9 @@ h3{
     text-transform: uppercase;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px){
+    body{
+    width : 100% !important;
+    height :  auto !important;
+}}

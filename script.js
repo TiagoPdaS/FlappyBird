@@ -34,30 +34,17 @@ var scoreAudio = new  Audio();
 scoreAudio.src = "sounds/score.mp3"
 
  //print Screen
-// Adiciona o evento de toque para dispositivos móveis
-// Adiciona um ouvinte de eventos de toque à janela para evitar o zoom padrão do navegador
-window.addEventListener("touchstart", function(event) {
-    // Chama preventDefault() no evento para evitar o comportamento padrão de zoom
+//mobile function
+ window.addEventListener("touchstart", function(event) {
     event.preventDefault();
 }, { passive: false });
 
-// Adiciona um ouvinte de eventos de toque ao canvas
 canvas.addEventListener("touchstart", onTouchStart);
-
-// Função para lidar com o toque
 function onTouchStart(event) {
-    // Obtém as coordenadas do toque em relação ao canvas
     var touchY = event.touches[0].clientY - canvas.offsetTop;
-    
-    // Atualiza a posição Y do objeto (supondo que 'bY' seja a posição Y do objeto)
-    bY = touchY - 26;
-    
-    // Toca o som de voo (supondo que 'fly' seja o objeto de áudio)
-    fly.play();
+     bY = touchY - 26;
+     fly.play();
 }
-
-
-
 
  document.addEventListener("keydown",flying);
  //flying
