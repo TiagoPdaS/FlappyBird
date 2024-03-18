@@ -45,6 +45,28 @@ function jogo(){
     //background game
     ctx.drawImage(bg,0,0) //drawImage (image,x,y)
 
+    //creating pipes
+    for(let i = 0; i< pipe.length; i++){
+        //pipes position
+        constant = pipeup.height + spacePipes;
+        //pipe up settings
+        ctx.drawImage(pipeup, pipe[i].x , pipe[i].y);
+
+        //pipe down setting
+        ctx.drawImage(pipedown, pipe[i].x, pipe[i].y + constant );
+
+        //pipes moving
+        pipe[i].x = pipe[i].x - 1 ;
+
+        //creating new pipes
+        if(pipe[i].x == 125){
+            pipe.push({
+                x : canvas.clientWidth,
+                y: Math.floor(Math.random()*pipeup.height)-pipeup.height
+            })
+        }
+    }
+
     //drawing floor
     ctx.drawImage(floor , 0 ,canvas.height - floor.height);
 
