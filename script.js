@@ -65,14 +65,35 @@ function jogo(){
                 y: Math.floor(Math.random()*pipeup.height)-pipeup.height
             })
         }
+
+        //birds between the edges of the pipe
+        if(bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeup.width
+            //bird collides with the pipe
+            && (bY <= pipe[i].y + pipeup.height || bY+bird.height >= pipe[i].y+constant)
+             //bird collides with the floor
+            || bY + bird.height >= canvas.height - floor.height){
+                location.reload();
+            }
+
+          //points
+          if(pipe[i].x == 5){
+            score = score + 1;
+            scoreAudio.play();
+          }
+
     }
 
     //drawing floor
-    ctx.drawImage(floor , 0 ,canvas.height - floor.height);
+    ctx.drawImage(floor,0,canvas.height - floor.height);
 
     //drawing bird
     ctx.drawImage(bird ,bX ,bY );
     bY += gravity;
+
+    //creating points
+    ctx.fillStyle = "#000";
+    ctx.font = "20px Verdana";
+    ctx.fillText("score: " + score, 10, canvas.height-20);
 
     requestAnimationFrame(jogo);
 }
