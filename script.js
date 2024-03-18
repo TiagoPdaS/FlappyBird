@@ -44,7 +44,7 @@ function onTouchStart(event) {
     var touchY = event.touches[0].clientY - canvas.offsetTop;
     
     // Atualiza a posição Y do objeto (supondo que 'bY' seja a posição Y do objeto)
-    bY = touchY - 26;
+    bY = touchY - 15;
     
     // Toca o som de voo (supondo que 'fly' seja o objeto de áudio)
     fly.play();
