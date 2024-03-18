@@ -53,17 +53,17 @@ function jogo(){
         ctx.drawImage(pipeup, pipe[i].x , pipe[i].y);
 
         //pipe down setting
-        ctx.drawImage(pipedown, pipe[i].x, pipe[i].y + constant );
+        ctx.drawImage(pipedown, pipe[i].x, pipe[i].y + constant);
 
         //pipes moving
-        pipe[i].x = pipe[i].x - 1 ;
+        pipe[i].x = pipe[i].x - 1;
 
         //creating new pipes
         if(pipe[i].x == 125){
             pipe.push({
                 x : canvas.clientWidth,
                 y: Math.floor(Math.random()*pipeup.height)-pipeup.height
-            })
+            });
         }
 
         //birds between the edges of the pipe
@@ -71,9 +71,10 @@ function jogo(){
             //bird collides with the pipe
             && (bY <= pipe[i].y + pipeup.height || bY+bird.height >= pipe[i].y+constant)
              //bird collides with the floor
-            || bY + bird.height >= canvas.height - floor.height){
+             || bY >= canvas.height - floor.height && bY + bird.height <= canvas.height){
                 location.reload();
             }
+            
 
           //points
           if(pipe[i].x == 5){
@@ -96,6 +97,6 @@ function jogo(){
     ctx.fillText("score: " + score, 10, canvas.height-20);
 
     requestAnimationFrame(jogo);
-}
 
+};
 jogo();
